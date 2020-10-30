@@ -1,6 +1,6 @@
 substitutions:
-  _IMAGE_NAME: bookstore-jib-compute-engine-run
-  _GCS_CACHE_BUCKET: bookstore-jib-compute-engine-run
+  _IMAGE_NAME: bookstore-jib-gke-run
+  _GCS_CACHE_BUCKET: bookstore-jib-gke-run
 
 steps:
 
