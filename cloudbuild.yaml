@@ -22,7 +22,7 @@ steps:
 
   - name: gcr.io/cloud-builders/mvn:3.5.0-jdk-8
     id: build
-    args: ['clean', 'install', 'jib:build', '-Dimage=eu.gcr.io/${PROJECT_ID}/${_IMAGE_NAME}']
+    args: ['clean', 'install', 'jib:build', '-Dimage=gcr.io/${PROJECT_ID}/${_IMAGE_NAME}']
     volumes:
       - name: m2
         path: /root/.m2/
@@ -48,7 +48,7 @@ steps:
       - build
     args:
       - run
-      - --image=eu.gcr.io/${PROJECT_ID}/${_IMAGE_NAME}:latest
-      - --location=europe-west6-a
+      - --image=gcr.io/${PROJECT_ID}/${_IMAGE_NAME}:latest
+      - --location=us-central1-a
       - --cluster=cloud-build-demo
       - --expose=8080
