@@ -95,7 +95,6 @@
                 <configuration>
                     <to>
                         <image>gcr.io/bookstore/bookstore-jib-gke-run</image>
-                        <credHelper>gcr</credHelper>
                     </to>
                 </configuration>
             </plugin>
