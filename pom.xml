@@ -17,6 +17,7 @@
     <properties>
         <java.version>8</java.version>
         <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
+        <jib-maven-plugin.version>1.5.1</jib-maven-plugin.version>
     </properties>
 
 
@@ -90,14 +91,11 @@
             <plugin>
                 <groupId>com.google.cloud.tools</groupId>
                 <artifactId>jib-maven-plugin</artifactId>
-                <version>1.0.0</version>
+                <version>${jib-maven-plugin.version}</version>
                 <configuration>
-                    <from>
-                        <image>openjdk:alpine</image>
-                    </from>
                     <to>
                         <image>gcr.io/bookstore/bookstore-jib-gke-run</image>
-                        <credHelper>gcr</credHelper>
+                        <credHelper>gcr.io</credHelper>
                     </to>
                 </configuration>
             </plugin>
