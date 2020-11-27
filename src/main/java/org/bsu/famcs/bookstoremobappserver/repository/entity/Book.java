@@ -44,8 +44,8 @@ public class Book {
     private Set<Author> authors;
 
     @OneToMany(mappedBy = "book")
-    Set<Favorite> favorites;
+    private Set<Favorite> favorites;
 
     @OneToMany(mappedBy = "book")
-    Set<Order> orders;
+    private Set<Order> orders;
 }

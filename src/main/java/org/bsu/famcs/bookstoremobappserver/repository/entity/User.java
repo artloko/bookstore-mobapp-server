@@ -44,8 +44,8 @@ public class User {
     private Timestamp updatedAt;
 
     @OneToMany(mappedBy = "user")
-    Set<Favorite> favorites;
+    private Set<Favorite> favorites;
 
     @OneToMany(mappedBy = "user")
-    Set<Order> orders;
+    private Set<Order> orders;
 }

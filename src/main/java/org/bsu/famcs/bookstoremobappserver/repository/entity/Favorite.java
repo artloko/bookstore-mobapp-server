@@ -18,11 +18,11 @@ public class Favorite {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    User user;
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "book_id")
-    Book book;
+    private Book book;
 
     @Column(name = "created_at")
     private Timestamp createdAt;
