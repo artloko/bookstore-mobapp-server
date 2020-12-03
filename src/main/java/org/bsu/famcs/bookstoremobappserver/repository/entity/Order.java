@@ -15,6 +15,7 @@ import java.sql.Timestamp;
 public class Order {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
@@ -44,4 +45,10 @@ public class Order {
     @JoinColumn(name = "book_id", nullable = false)
     private Book book;
 
+    @PrePersist
+    public void prePersist() {
+        if (createdAt == null)
+            createdAt = new Timestamp(System.currentTimeMillis());
+        updatedAt = new Timestamp(System.currentTimeMillis());
+    }
 }

@@ -13,6 +13,7 @@ import java.sql.Timestamp;
 public class Favorite {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
@@ -29,5 +30,12 @@ public class Favorite {
 
     @Column(name = "updated_at")
     private Timestamp updatedAt;
+
+    @PrePersist
+    public void prePersist() {
+        if (createdAt == null)
+            createdAt = new Timestamp(System.currentTimeMillis());
+        updatedAt = new Timestamp(System.currentTimeMillis());
+    }
 
 }

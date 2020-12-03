@@ -1,22 +1,38 @@
 package org.bsu.famcs.bookstoremobappserver.controller;
 
+import org.bsu.famcs.bookstoremobappserver.repository.entity.User;
 import org.bsu.famcs.bookstoremobappserver.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HelloWorldController {
 
-    TestService testService;
+    private final TestService testService;
+
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    private HelloWorldController(TestService testService) {
+    public HelloWorldController(TestService testService, PasswordEncoder passwordEncoder) {
         this.testService = testService;
+        this.passwordEncoder = passwordEncoder;
+    }
+
+    @PostMapping
+    User signIn(@RequestParam String email, @RequestParam String password) {
+        User u = new User();
+        u.setEmail(email);
+        u.setPasswordEncrypted(passwordEncoder.encode(password));
+        return testService.save(u);
     }
 
     @GetMapping("/authors")
+    @PreAuthorize("hasAuthority('USER')")
     public String getAuthors() {
         return testService.getAuthors().toString();
     }
