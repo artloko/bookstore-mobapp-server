@@ -51,11 +51,4 @@ public class TestService {
         return orderRepository.findAll();
     }
 
-    public Iterable<User> getUsers() {
-        return userRepository.findAll();
-    }
-
-    public User save(User u) {
-        return userRepository.save(u);
-    }
 }

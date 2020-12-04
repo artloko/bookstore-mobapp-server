@@ -1,5 +1,6 @@
 package org.bsu.famcs.bookstoremobappserver.controller;
 
+import org.bsu.famcs.bookstoremobappserver.controller.v1.HelloWorldController;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

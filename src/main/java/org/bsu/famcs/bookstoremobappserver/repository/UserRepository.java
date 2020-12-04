@@ -1,9 +1,9 @@
 package org.bsu.famcs.bookstoremobappserver.repository;
 
-import org.bsu.famcs.bookstoremobappserver.repository.entity.User;
+import org.bsu.famcs.bookstoremobappserver.repository.entity.UserEntity;
 import org.springframework.data.repository.CrudRepository;
 
-public interface UserRepository extends CrudRepository<User, Long> {
+public interface UserRepository extends CrudRepository<UserEntity, Long> {
 
-    User findUserByEmail(String email);
+    UserEntity findUserByEmail(String email);
 }

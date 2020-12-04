@@ -1,13 +1,10 @@
-package org.bsu.famcs.bookstoremobappserver.controller;
+package org.bsu.famcs.bookstoremobappserver.controller.v1;
 
-import org.bsu.famcs.bookstoremobappserver.repository.entity.User;
 import org.bsu.famcs.bookstoremobappserver.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -15,20 +12,10 @@ public class HelloWorldController {
 
     private final TestService testService;
 
-    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public HelloWorldController(TestService testService, PasswordEncoder passwordEncoder) {
+    public HelloWorldController(TestService testService) {
         this.testService = testService;
-        this.passwordEncoder = passwordEncoder;
-    }
-
-    @PostMapping
-    User signIn(@RequestParam String email, @RequestParam String password) {
-        User u = new User();
-        u.setEmail(email);
-        u.setPasswordEncrypted(passwordEncoder.encode(password));
-        return testService.save(u);
     }
 
     @GetMapping("/authors")
@@ -57,10 +44,6 @@ public class HelloWorldController {
         return testService.getOrders().toString();
     }
 
-    @GetMapping("/users")
-    public String getUsers() {
-        return testService.getUsers().toString();
-    }
 
     @PostMapping("/")
     public String postHome() {

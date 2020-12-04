@@ -1,12 +1,8 @@
 package org.bsu.famcs.bookstoremobappserver.repository.entity;
 
-import lombok.AccessLevel;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -16,7 +12,8 @@ import java.util.Set;
 @Data
 @RequiredArgsConstructor
 @Table(name = "users")
-public class User {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class UserEntity {
 
     public enum Role {USER, ADMIN, USER_MANAGER}
 
@@ -49,10 +46,10 @@ public class User {
     @Column(name = "updated_at")
     private Timestamp updatedAt;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "userEntity")
     private Set<Favorite> favorites;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "userEntity")
     private Set<Order> orders;
 
     @Transient
