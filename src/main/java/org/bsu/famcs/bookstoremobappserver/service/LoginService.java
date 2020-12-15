@@ -1,5 +1,6 @@
 package org.bsu.famcs.bookstoremobappserver.service;
 
+import org.bsu.famcs.bookstoremobappserver.controller.entity.SignUpUserRq;
 import org.bsu.famcs.bookstoremobappserver.repository.UserRepository;
 import org.bsu.famcs.bookstoremobappserver.repository.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,14 +26,9 @@ public class LoginService {
         return userRepository.findAll();
     }
 
-    public UserEntity save(UserEntity u) {
-        return userRepository.save(u);
-    }
-
-    public UserEntity login(String email, String password) throws LoginException {
-        UserEntity userEntity = userRepository.findUserByEmail(email);
-        if (passwordEncoder.matches(password, userEntity.getPasswordEncrypted()))
-            return userEntity;
-        else throw new LoginException("There is no such user");
+    public UserEntity save(SignUpUserRq u) {
+        UserEntity userEntity = u.convert();
+        userEntity.setPasswordEncrypted(passwordEncoder.encode(u.getPasswordEncrypted()));
+        return userRepository.save(userEntity);
     }
 }
