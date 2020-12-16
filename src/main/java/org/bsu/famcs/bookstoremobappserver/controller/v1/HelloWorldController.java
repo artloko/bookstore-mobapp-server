@@ -17,9 +17,9 @@ public class HelloWorldController {
     public HelloWorldController(TestService testService) {
         this.testService = testService;
     }
-
+    
+    /*
     @GetMapping("/authors")
-    @PreAuthorize("hasAuthority('USER')")
     public String getAuthors() {
         return testService.getAuthors().toString();
     }
@@ -44,6 +44,7 @@ public class HelloWorldController {
         return testService.getOrders().toString();
     }
 
+     */
 
     @PostMapping("/")
     public String postHome() {

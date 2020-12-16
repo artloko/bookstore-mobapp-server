@@ -22,14 +22,7 @@ import static org.bsu.famcs.bookstoremobappserver.config.SecurityCredentials.SIG
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurity extends WebSecurityConfigurerAdapter {
-
-
-    @Value(value = "${auth0.apiAudience}")
-    private String apiAudience;
-    @Value(value = "${auth0.issuer}")
-    private String issuer;
 
     private final PostgresUserDetailsService userDetailsService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;

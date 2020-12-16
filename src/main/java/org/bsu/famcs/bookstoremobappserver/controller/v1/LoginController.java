@@ -1,7 +1,6 @@
 package org.bsu.famcs.bookstoremobappserver.controller.v1;
 
 import org.bsu.famcs.bookstoremobappserver.controller.entity.SignUpUserRq;
-import org.bsu.famcs.bookstoremobappserver.repository.entity.UserEntity;
 import org.bsu.famcs.bookstoremobappserver.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
