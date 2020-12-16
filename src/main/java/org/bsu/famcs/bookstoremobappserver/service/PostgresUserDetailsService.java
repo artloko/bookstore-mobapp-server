@@ -31,6 +31,6 @@ public class PostgresUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException("User '" + email + "' not found");
 
         GrantedAuthority authority = new SimpleGrantedAuthority(userEntity.getRole().name());
-        return new org.springframework.security.core.userdetails.User(userEntity.getEmail(), new BCryptPasswordEncoder().encode(userEntity.getPasswordEncrypted()), Arrays.asList(authority));
+        return new org.springframework.security.core.userdetails.User(userEntity.getEmail(), userEntity.getPasswordEncrypted(), Arrays.asList(authority));
     }
 }

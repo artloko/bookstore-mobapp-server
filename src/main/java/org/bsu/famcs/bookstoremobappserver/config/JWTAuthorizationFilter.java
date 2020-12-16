@@ -20,6 +20,8 @@ import static org.bsu.famcs.bookstoremobappserver.config.SecurityCredentials.SEC
 
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 
+
+
     public JWTAuthorizationFilter(AuthenticationManager authManager) {
         super(authManager);
     }
