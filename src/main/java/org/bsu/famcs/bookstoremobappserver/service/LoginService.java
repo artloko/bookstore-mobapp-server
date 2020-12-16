@@ -1,6 +1,7 @@
 package org.bsu.famcs.bookstoremobappserver.service;
 
 import org.bsu.famcs.bookstoremobappserver.controller.entity.SignUpUserRq;
+import org.bsu.famcs.bookstoremobappserver.controller.entity.UserInfoRs;
 import org.bsu.famcs.bookstoremobappserver.repository.UserRepository;
 import org.bsu.famcs.bookstoremobappserver.repository.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,5 +31,9 @@ public class LoginService {
         UserEntity userEntity = u.convert();
         userEntity.setPasswordEncrypted(passwordEncoder.encode(u.getPasswordEncrypted()));
         return userRepository.save(userEntity);
+    }
+
+    public UserInfoRs getUserInfo(String email) {
+        return new UserInfoRs(userRepository.findUserByEmail(email));
     }
 }
