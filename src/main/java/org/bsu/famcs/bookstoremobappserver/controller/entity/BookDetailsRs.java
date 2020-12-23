@@ -22,4 +22,8 @@ public class BookDetailsRs extends BookTO {
         this.publishingYear = book.getPublishingYear();
         this.description = book.getDescription();
     }
+
+    public BookDetailsRs(String description) {
+        this.description = description;
+    }
 }

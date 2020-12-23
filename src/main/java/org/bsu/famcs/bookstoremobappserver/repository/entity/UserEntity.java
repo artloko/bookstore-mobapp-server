@@ -34,6 +34,9 @@ public class UserEntity {
     @Column(name = "reset_password_sent_at")
     private Timestamp passwordResetSentAt;
 
+    @Column(name = "remember_created_at")
+    private Timestamp rememberCreatedAt;
+
     @Column(name = "address")
     private String address;
 

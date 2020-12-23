@@ -29,7 +29,7 @@ public class CatalogController {
         return catalogService.getBooks(genre, nameSubstr, author);
     }
 
-    @GetMapping("/books")
+    @GetMapping("/book")
     @ResponseBody
     public BookDetailsRs getBookDetails(@RequestParam Long bookId) {
         return catalogService.getBookDetails(bookId);

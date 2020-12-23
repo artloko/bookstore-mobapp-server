@@ -13,7 +13,6 @@ import java.util.stream.Collectors;
 
 @Data
 @RequiredArgsConstructor
-@NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BookTO {
 

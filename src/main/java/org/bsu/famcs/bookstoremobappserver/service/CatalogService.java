@@ -8,6 +8,7 @@ import org.bsu.famcs.bookstoremobappserver.controller.entity.GenresRs;
 import org.bsu.famcs.bookstoremobappserver.controller.entity.to.BookTO;
 import org.bsu.famcs.bookstoremobappserver.repository.*;
 import org.bsu.famcs.bookstoremobappserver.repository.entity.Author;
+import org.bsu.famcs.bookstoremobappserver.repository.entity.Book;
 import org.bsu.famcs.bookstoremobappserver.repository.entity.Favorite;
 import org.bsu.famcs.bookstoremobappserver.repository.entity.Genre;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +55,10 @@ public class CatalogService {
     }
 
     public BookDetailsRs getBookDetails(Long bookId) {
-        return new BookDetailsRs(bookRepository.findById(bookId).orElse(null));
+        Book book = bookRepository.findById(bookId).orElse(null);
+        if (book != null)
+            return new BookDetailsRs(book);
+        else
+            return new BookDetailsRs("There is no book such book");
     }
 }

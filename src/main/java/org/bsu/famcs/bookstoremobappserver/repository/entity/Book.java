@@ -41,7 +41,7 @@ public class Book {
     @Column(name = "image_url")
     private String imageUrl;
 
-    //!TODO map
+    @Column(name = "description")
     private String description;
 
     @ManyToMany(mappedBy = "books")
