@@ -8,4 +8,6 @@ public class SecurityCredentials {
 
 
     public static final String SIGN_UP_URL = "/sign-up";
+    public static final String CATALOG_URL = "/catalog/books";
+    public static final String SWAGGER_URL = "/swagger-ui/#/";
 }

@@ -25,8 +25,8 @@ public class CatalogController {
 
     @GetMapping("/books")
     @ResponseBody
-    public CatalogRs getBooks(@RequestParam String genre,
-                              @RequestParam String nameSubstr, @RequestParam String author) {
+    public CatalogRs getBooks(@RequestParam(required = false) String genre,
+                              @RequestParam(required = false) String nameSubstr, @RequestParam(required = false) String author) {
         return catalogService.getBooks(genre, nameSubstr, author);
     }
 

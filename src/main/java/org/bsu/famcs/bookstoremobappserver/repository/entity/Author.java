@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 import java.util.Set;
 
 @Data
-@RequiredArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "authors")
 public class Author {
@@ -41,9 +41,5 @@ public class Author {
         if (createdAt == null)
             createdAt = new Timestamp(System.currentTimeMillis());
         updatedAt = new Timestamp(System.currentTimeMillis());
-    }
-
-    public Author(String name) {
-        this.name = name;
     }
 }

@@ -11,6 +11,8 @@ import org.bsu.famcs.bookstoremobappserver.repository.entity.Author;
 import org.bsu.famcs.bookstoremobappserver.repository.entity.Book;
 import org.bsu.famcs.bookstoremobappserver.repository.entity.Favorite;
 import org.bsu.famcs.bookstoremobappserver.repository.entity.Genre;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,6 +25,8 @@ import java.util.stream.StreamSupport;
 
 @Service
 public class CatalogService {
+
+    Logger logger = LoggerFactory.getLogger(CatalogService.class.getName());
 
     private final BookRepository bookRepository;
     private final GenreRepository genreRepository;
@@ -43,12 +47,14 @@ public class CatalogService {
     }
 
     public CatalogRs getBooks(String genreName, String nameSubstr, String authorName) {
+
+
         return new CatalogRs(StreamSupport
                 .stream(bookRepository
                         .getFilteredBooks(
-                                nameSubstr,
-                                authorName,
-                                genreName)
+                                nameSubstr != null ? nameSubstr : "",
+                                authorName != null ? authorName : "",
+                                genreName != null ? genreName : "")
                         .spliterator(), false)
                 .map(BookTO::new)
                 .collect(Collectors.toList()));

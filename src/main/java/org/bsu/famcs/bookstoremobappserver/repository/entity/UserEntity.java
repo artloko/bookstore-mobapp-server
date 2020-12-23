@@ -2,12 +2,14 @@ package org.bsu.famcs.bookstoremobappserver.repository.entity;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Set;
 
+@EqualsAndHashCode
 @Entity
 @Data
 @RequiredArgsConstructor
@@ -52,9 +54,11 @@ public class UserEntity {
     @Column(name = "avatar_url")
     private String avatarUrl;
 
+    @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "userEntity")
     private Set<Favorite> favorites;
 
+    @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "userEntity")
     private Set<Order> orders;
 

@@ -1,16 +1,16 @@
 package org.bsu.famcs.bookstoremobappserver.repository.entity;
 
-import lombok.AccessLevel;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Set;
 
+@EqualsAndHashCode
 @Data
-@RequiredArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "books")
 public class Book {
@@ -45,15 +45,19 @@ public class Book {
     private String description;
 
     @ManyToMany(mappedBy = "books")
+    @EqualsAndHashCode.Exclude
     private Set<Genre> genres;
 
     @ManyToMany(mappedBy = "books")
+    @EqualsAndHashCode.Exclude
     private Set<Author> authors;
 
     @OneToMany(mappedBy = "book")
+    @EqualsAndHashCode.Exclude
     private Set<Favorite> favorites;
 
     @OneToMany(mappedBy = "book")
+    @EqualsAndHashCode.Exclude
     private Set<Order> orders;
 
     @PrePersist
