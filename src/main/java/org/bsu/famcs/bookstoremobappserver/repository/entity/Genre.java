@@ -31,7 +31,7 @@ public class Genre {
 
     @ManyToMany
     @JoinTable(
-            name = "books_genres",
+            name = "book_genres",
             joinColumns = @JoinColumn(name = "genre_id"),
             inverseJoinColumns = @JoinColumn(name = "book_id"))
     private Set<Book> books;
@@ -41,5 +41,9 @@ public class Genre {
         if (createdAt == null)
             createdAt = new Timestamp(System.currentTimeMillis());
         updatedAt = new Timestamp(System.currentTimeMillis());
+    }
+
+    public Genre(String name) {
+        this.name = name;
     }
 }

@@ -38,6 +38,12 @@ public class Book {
     @Column(name = "updated_at")
     private Timestamp updatedAt;
 
+    @Column(name = "image_url")
+    private String imageUrl;
+
+    //!TODO map
+    private String description;
+
     @ManyToMany(mappedBy = "books")
     private Set<Genre> genres;
 

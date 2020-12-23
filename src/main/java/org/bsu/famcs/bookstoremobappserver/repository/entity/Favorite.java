@@ -38,4 +38,9 @@ public class Favorite {
         updatedAt = new Timestamp(System.currentTimeMillis());
     }
 
+    public Favorite(UserEntity userEntity, Book book) {
+        this.userEntity = userEntity;
+        this.book = book;
+    }
+
 }

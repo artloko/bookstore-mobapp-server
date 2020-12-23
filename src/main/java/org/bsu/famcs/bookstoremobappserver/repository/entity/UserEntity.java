@@ -46,6 +46,9 @@ public class UserEntity {
     @Column(name = "updated_at")
     private Timestamp updatedAt;
 
+    @Column(name = "avatar_url")
+    private String avatarUrl;
+
     @OneToMany(mappedBy = "userEntity")
     private Set<Favorite> favorites;
 

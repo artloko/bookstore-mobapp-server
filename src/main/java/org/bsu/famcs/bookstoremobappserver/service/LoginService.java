@@ -32,8 +32,4 @@ public class LoginService {
         userEntity.setPasswordEncrypted(passwordEncoder.encode(u.getPasswordEncrypted()));
         return userRepository.save(userEntity);
     }
-
-    public UserInfoRs getUserInfo(String email) {
-        return new UserInfoRs(userRepository.findUserByEmail(email));
-    }
 }
