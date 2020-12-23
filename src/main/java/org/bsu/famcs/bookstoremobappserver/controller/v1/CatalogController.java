@@ -5,7 +5,8 @@ import org.bsu.famcs.bookstoremobappserver.service.CatalogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@RestController("/catalog")
+@RestController
+@RequestMapping("/catalog")
 public class CatalogController {
 
     private final CatalogService catalogService;
