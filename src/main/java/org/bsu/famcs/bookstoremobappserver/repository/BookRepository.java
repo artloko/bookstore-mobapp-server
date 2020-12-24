@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 public interface BookRepository extends CrudRepository<Book, Long> {
 
-    @Query("SELECT b FROM Book b inner join fetch b.authors a inner join fetch b.genres g where " +
+    @Query("select distinct b from Book b inner join fetch b.authors a inner join fetch b.genres g where " +
             "b.name like concat('%', :name, '%') and " +
             "a.name like concat('%', :author, '%') and " +
             "(:genre = '' or g.name = :genre)")
