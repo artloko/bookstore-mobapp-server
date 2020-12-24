@@ -38,7 +38,7 @@ public class ProfileService {
 
 
     public void addToFavorites(@RequestBody FavoriteInsertRq favoriteInsertRq) {
-        UserEntity userEntity = userRepository.findById(favoriteInsertRq.getUserId()).orElse(null);
+        UserEntity userEntity = userRepository.findUserByEmail(favoriteInsertRq.getUserId());
         if (userEntity == null) {
             //user not found
             return;

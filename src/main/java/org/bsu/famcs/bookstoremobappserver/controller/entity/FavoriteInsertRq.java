@@ -9,6 +9,6 @@ import lombok.RequiredArgsConstructor;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class FavoriteInsertRq {
 
-    private Long userId;
+    private String userId;
     private Long bookId;
 }
