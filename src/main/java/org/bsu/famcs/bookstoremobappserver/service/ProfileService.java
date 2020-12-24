@@ -48,7 +48,8 @@ public class ProfileService {
             //book not found
             return;
         }
-        favoriteRepository.save(new Favorite(userEntity, book));
+        if (!favoriteRepository.findByUserEntityAndBook(userEntity, book).isPresent())
+            favoriteRepository.save(new Favorite(userEntity, book));
     }
 
     public FavoriteRs getFavorites(String userId) {
