@@ -44,6 +44,9 @@ public class Book {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "price")
+    private Integer price;
+
     @ManyToMany(mappedBy = "books")
     @EqualsAndHashCode.Exclude
     private Set<Genre> genres;

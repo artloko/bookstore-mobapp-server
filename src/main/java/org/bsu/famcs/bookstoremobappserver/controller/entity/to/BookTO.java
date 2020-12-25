@@ -18,6 +18,7 @@ public class BookTO {
 
     private Long bookId;
     private String name;
+    private Double price;
     private Set<String> authorsList;
     private Set<String> genresList;
     private boolean isOrderAvailable;
@@ -27,6 +28,7 @@ public class BookTO {
     public BookTO(Book book) {
         this.bookId = book.getId();
         this.name = book.getName();
+        this.price = Double.valueOf(book.getPrice());
         this.authorsList = book.getAuthors().stream().map(Author::getName).collect(Collectors.toSet());
         this.genresList = book.getGenres().stream().map(Genre::getName).collect(Collectors.toSet());
         this.isOrderAvailable = book.getQuantity() > 0;
