@@ -49,5 +49,12 @@ public class Order {
         if (createdAt == null)
             createdAt = new Timestamp(System.currentTimeMillis());
         updatedAt = new Timestamp(System.currentTimeMillis());
+        amount = 1;
+        status = 1;
+    }
+
+    public Order(UserEntity userEntity, Book book) {
+        this.userEntity = userEntity;
+        this.book = book;
     }
 }
