@@ -43,7 +43,7 @@ public class OrderService {
     public OrdersRs getOrders(String userId) {
         UserEntity userEntity = userRepository.findUserByEmail(userId);
         return new OrdersRs(StreamSupport
-                .stream(orderRepository.findByUserEntity(userEntity).spliterator(), false)
+                .stream(orderRepository.findByUserEntity_Id(userEntity.getId()).spliterator(), false)
                 .map(item -> new BookTO(item.getBook()))
                 .collect(Collectors.toList()));
     }

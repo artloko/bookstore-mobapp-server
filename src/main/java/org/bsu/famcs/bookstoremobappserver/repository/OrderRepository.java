@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface OrderRepository extends CrudRepository<Order, Long> {
 
-    Iterable<Order> findByUserEntity(UserEntity userEntity);
+    Iterable<Order> findByUserEntity_Id(Long userEntity_id);
 }
