@@ -41,8 +41,9 @@ public class OrderService {
     }
 
     public OrdersRs getOrders(String userId) {
+        UserEntity userEntity = userRepository.findUserByEmail(userId);
         return new OrdersRs(StreamSupport
-                .stream(orderRepository.findByUserEntity_Email(userId).spliterator(), false)
+                .stream(orderRepository.findByUserEntity(userEntity).spliterator(), false)
                 .map(item -> new BookTO(item.getBook()))
                 .collect(Collectors.toList()));
     }
